@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../../assets/icons/logo.png";
 import logo1 from "../../../assets/icons/letter-c.png";
 import './Header.css'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { useState } from 'react';
+import App from '../../../App';
+import Switch from "react-switch";
+import { ThemeContext } from '../../../layout/Main';
 
-const Header = () => {
+
+
+const Header = ({value}) => {
+   
+   
     return (
       <Navbar
         sticky="top"
@@ -45,9 +53,14 @@ const Header = () => {
               <Link className="nav-style  me-lg-4" to="/faq">
                 FAQ
               </Link>
-              <Link className="nav-style  me-lg-4" to="/faq">
+              <Link className="nav-style  me-lg-4" to="/blog">
                 Blog
               </Link>
+
+              {/* <Switch className="switch" onChange={toggleTheme}></Switch> */}
+               
+
+              <Switch onChange={value.toggleTheme} checked={value.theme === "dark"} />
             </Nav>
             {/* <Nav>
               <Link to="/login">Login</Link>

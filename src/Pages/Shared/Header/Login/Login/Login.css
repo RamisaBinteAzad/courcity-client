@@ -1,0 +1,72 @@
+.bg-login{
+    background-image: url('../../../../../assets/images/img2.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: overlay;
+}
+.text-pale-lime-green{
+   color:#FFFFBC;
+    /* color:#c3ffc4; */
+}
+.text-light-blue{
+    color:#B9D3EE;
+   
+}
+.text-light-mediumvioletred{
+    color:#d4277e;
+   
+}
+#light .text-navy{
+   color:#090761;
+}
+#dark .text-navy{
+color:aquamarine;
+}
+.divider-container {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 0 auto;
+}
+.line {
+  height: 2px;
+ background: #d4277e;
+  width: 100%;
+}
+#light .title2 {
+
+   color:#090761;
+   display: block;
+}
+
+#dark .title2 {
+color:aquamarine;
+  display: block;
+}
+#dark .btn-color-change{
+    background-color: green;
+    color:white;
+    
+}
+#dark .btn-color-change:hover{
+    background-color: maroon;
+    
+}
+#dark .btn-color-change-google{
+    
+    background-color: #F28C28;
+    border: 0;
+    color:navy;
+};
+#dark .btn-color-change-google:hover{
+    
+    background-color: rgb(36, 36, 182);
+    border: 0;
+    color:white;
+};
+
+

@@ -3,15 +3,31 @@ import { Link } from 'react-router-dom';
 import logo from "../../../assets/icons/logo.png";
 import logo1 from "../../../assets/icons/letter-c.png";
 import './Header.css'
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Button, Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
 import App from '../../../App';
 import Switch from "react-switch";
+import { FaUser } from "react-icons/fa";
 import { ThemeContext } from '../../../layout/Main';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+ 
+import {
+  faArrowRight,
+  faSignIn,
+  faSignInAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
 
-const Header = ({value}) => {
+const Header = ({ value }) => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+      logOut()
+        .then(() => {})
+        .catch((error) => console.error(error));
+    };
+    
    
    
     return (
@@ -36,7 +52,7 @@ const Header = ({value}) => {
                 <span className="text-gradient font-size">C</span>
                 our
               </span>
-              <span className="text-gradient fs-2  fw-bold font-size">c</span>
+              <span className="text-gradient fs-2  fw-bold font-size">C</span>
               <span className="color-Navy fs-2  fw-bold">ity</span>
             </Link>
           </Navbar.Brand>
@@ -58,19 +74,75 @@ const Header = ({value}) => {
               </Link>
 
               {/* <Switch className="switch" onChange={toggleTheme}></Switch> */}
-               
 
-              <Switch onChange={value.toggleTheme} checked={value.theme === "dark"} />
+              <Switch
+                className="  me-lg-4"
+                onChange={value.toggleTheme}
+                checked={value.theme === "dark"}
+              />
+              <>
+                {user?.uid ? (
+                  <>
+                    <span>{user?.displayName}</span>
+                    <button
+                      type="button"
+                      onClick={handleLogOut}
+                      className=" rounded border-0 btn-bg  bg-danger mx-3 text-white  px-3 py-2"
+                    >
+                      Log Out
+                      <FontAwesomeIcon
+                        className="ms-2"
+                        icon={faSignInAlt}
+                      ></FontAwesomeIcon>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link className="nav-style  me-lg-4" to="/login">
+                      Log In
+                    </Link>
+                    <Link to="/register">
+                      <button
+                        type="button"
+                        className=" rounded border-0 mx-3  btn-bg bg-success text-white  px-3 py-2"
+                      >
+                        Join For Free
+                        <FontAwesomeIcon
+                          className="ms-2"
+                          icon={faSignInAlt}
+                        ></FontAwesomeIcon>
+                      </button>
+                    </Link>
+                  </>
+                )}
+              </>
+              <Link to="/profile">
+                {user?.photoURL ? (
+                  <Image
+                    style={{ height: "30px" }}
+                    roundedCircle
+                    src={user?.photoURL}
+                  ></Image>
+                ) : (
+                  <FaUser></FaUser>
+                )}
+              </Link>
+              {/* <Link className="nav-style  me-lg-4" to="/login">
+                Log In
+              </Link>
+              <Link to="/register">
+                <button
+                  type="button"
+                  className=" rounded border-0 btn-bg bg-success text-white  px-3 py-2"
+                >
+                  Join For Free
+                  <FontAwesomeIcon
+                    className="ms-2"
+                    icon={faSignInAlt}
+                  ></FontAwesomeIcon>
+                </button>
+              </Link> */}
             </Nav>
-            {/* <Nav>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-
-              <Link to="/profile"></Link>
-            </Nav> */}
-            {/* <div className="d-lg-none">
-              <LeftSideNav></LeftSideNav>
-            </div> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>

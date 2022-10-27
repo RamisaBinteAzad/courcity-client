@@ -9,7 +9,7 @@ const Main = () => {
       const [theme, setTheme] = useState("light");
      const toggleTheme = (checked) => {
       setTheme((curr) => (curr === "light" ? "dark" : "light"));
-      console.log(checked);
+    //   console.log(checked);
     };
     
     return (

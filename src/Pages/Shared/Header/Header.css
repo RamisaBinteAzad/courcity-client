@@ -78,7 +78,7 @@
      
    background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;;
+  -webkit-text-fill-color: transparent;
 }
  
 #dark .btn-bg{

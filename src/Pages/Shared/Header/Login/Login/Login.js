@@ -17,32 +17,32 @@ const Login = () => {
   const { signIn, setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
-    
-     const { providerLogin, providerLoginGithub } = useContext(AuthContext);
+  const from = location.state?.from?.pathname || "/";
 
-    const googleProvider = new GoogleAuthProvider();
-     const githubProvider = new GithubAuthProvider();
+  const { providerLogin, providerLoginGithub } = useContext(AuthContext);
 
-     const handleGoogleSignIn = () => {
-       providerLogin(googleProvider)
-         .then((result) => {
-           const user = result.user;
-           console.log(user);
-         })
-         .catch((error) => console.error(error));
-    };
-    const handleGithubSignIn = () => {
-           providerLoginGithub(githubProvider)
-            .then((result) => {
-              const user = result.user;
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
-              console.log(user);
-            })
-            .catch((error) => {
-              console.log("error", error);
-            });
-     };
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+  const handleGithubSignIn = () => {
+    providerLoginGithub(githubProvider)
+      .then((result) => {
+        const user = result.user;
+
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -103,10 +103,10 @@ const Login = () => {
                     <FaGithub></FaGithub> Login with Github
                   </Button>
                 </ButtonGroup>
-                <div class="divider-container">
-                  <div class="line"></div>
-                  <h1 class="title2">Or</h1>
-                  <div class="line"></div>
+                <div className="divider-container">
+                  <div className="line"></div>
+                  <h1 className="title2">Or</h1>
+                  <div className="line"></div>
                 </div>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -160,7 +160,7 @@ const Login = () => {
           <Col lg="6" className="me-0 p-0 bg-login">
             <Container className="h-100 img-fluid d-flex justify-content-center align-items-center text-center  p-4   ">
               <div className="w-50   ">
-                <h1 class="text-pale-lime-green fw-bold display-4 mt-5  ">
+                <h1 className="text-pale-lime-green fw-bold display-4 mt-5  ">
                   New Here?
                 </h1>
                 <p className="text-light-blue">
@@ -169,7 +169,7 @@ const Login = () => {
                   the world.
                 </p>
                 <Link to="/register">
-                  <button class="btn btn-outline-info rounded-pill py-3 px-4">
+                  <button className="btn btn-outline-info rounded-pill w-50 p-2">
                     Sign Up
                   </button>
                 </Link>

@@ -1,127 +1,205 @@
-// import React from 'react';
-//  import { Button, ButtonGroup, Col, Container, Row } from "react-bootstrap";
-//  import Form from "react-bootstrap/Form";
-//  import { Link, useLocation, useNavigate } from "react-router-dom";
-//  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//  import { FaGoogle, FaGithub } from "react-icons/fa";
-//  import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import React, { useContext, useState } from "react";
+import { Button, ButtonGroup, Col, Container, Row } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaGoogle, FaGithub } from "react-icons/fa";
+import {
+  faEnvelope,
+  faLock,
+  faUser,
+  faImage,
+} from "@fortawesome/free-solid-svg-icons";
+import "./Register.css";
 
-//  import img2 from "../../../../../assets/images/img2.jpg";
-//  import "./Login.css";
-//  import { AuthContext } from "../../../../../contexts/AuthProvider/AuthProvider";
-//  import toast from "react-hot-toast";
-//  import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
- 
-//  const Register = () => {
-//     return (
-//       <div className="banner-section  w-100 h-100">
-//         <Container fluid>
-//           <Row className="flex-column-reverse flex-lg-row">
-//             <Col lg="6">
-//               <Container
-//                 className="h-75
-//                             p-5 d-flex justify-content-center"
-//               >
-//                 <div className="w-75">
-//                   <h1 className="text-navy display-4 text-center ">
-//                     Login To Your Account
-//                   </h1>
-//                   <p className="  text-center main fs-5   ">
-//                     Login using Social Networks
-//                   </p>
-//                   <ButtonGroup>
-//                     <Button
-                      
-//                       className="me-2 ms-5 btn-color-change-google"
-//                       variant="outline-primary"
-//                     >
-//                       <FaGoogle></FaGoogle> Login with Google
-//                     </Button>
-//                     <Button
-//                       variant="outline-dark"
-                      
-//                       className="btn-color-change"
-//                     >
-//                       <FaGithub></FaGithub> Login with Github
-//                     </Button>
-//                   </ButtonGroup>
-//                   <div class="divider-container">
-//                     <div class="line"></div>
-//                     <h1 class="title2">Or</h1>
-//                     <div class="line"></div>
-//                   </div>
-//                   <Form  >
-//                     <Form.Group className="mb-3" controlId="formBasicEmail">
-//                       <FontAwesomeIcon
-//                         className="me-2 text-success"
-//                         icon={faEnvelope}
-//                       ></FontAwesomeIcon>
-//                       <Form.Label className="text-light-mediumvioletred mt-2 fw-bold">
-//                         Email address
-//                       </Form.Label>
-//                       <Form.Control
-//                         className="rounded-pill px-4 py-2"
-//                         name="email"
-//                         type="email"
-//                         placeholder="Enter email"
-//                         required
-//                       />
-//                     </Form.Group>
+import { AuthContext } from "../../../../../contexts/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
-//                     <Form.Group className="mb-3" controlId="formBasicPassword">
-//                       <FontAwesomeIcon
-//                         className="me-2 text-success"
-//                         icon={faLock}
-//                       ></FontAwesomeIcon>
-//                       <Form.Label className="text-light-mediumvioletred fw-bold">
-//                         Password
-//                       </Form.Label>
-//                       <Form.Control
-//                         className="rounded-pill px-4 py-2"
-//                         name="password"
-//                         type="password"
-//                         placeholder="Password"
-//                         required
-//                       />
-//                     </Form.Group>
-//                     <div className="text-center">
-//                       <Button
-//                         variant="primary"
-//                         className="btn-bg  border border-0 rounded w-25 text-center"
-//                         type="submit"
-//                       >
-//                         Login
-//                       </Button>
-//                     </div>
+const Register = () => {
+  const [error, setError] = useState("");
+  const [accepted, setAccepted] = useState(false);
+  const { createUser, updateUserProfile, verifyEmail } =
+    useContext(AuthContext);
 
-//                     <Form.Text className="text-danger"></Form.Text>
-//                   </Form>
-//                 </div>
-//               </Container>
-//             </Col>
-//             <Col lg="6" className="me-0 p-0 bg-login">
-//               <Container className="h-100 img-fluid d-flex justify-content-center align-items-center text-center  p-4   ">
-//                 <div className="w-50   ">
-//                   <h1 class="text-pale-lime-green fw-bold display-4 mt-5  ">
-//                     New Here?
-//                   </h1>
-//                   <p className="text-light-blue">
-//                     Sign Up and discover new skills,meet passionate teachers and
-//                     become a part of the most helpful community of creatives in
-//                     the world.
-//                   </p>
-//                   <Link to="/register">
-//                     <button class="btn btn-outline-info rounded-pill py-3 px-4">
-//                       Sign Up
-//                     </button>
-//                   </Link>
-//                 </div>
-//               </Container>
-//             </Col>
-//           </Row>
-//         </Container>
-//       </div>
-//     );
-//  };
- 
-//  export default Register;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, photoURL, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setError("");
+        console.log(user);
+        form.reset();
+        handleUpdateUserProfile(name, photoURL);
+        handleEmailVerification();
+        toast.success("Please verify your email address.");
+      })
+      .catch((e) => {
+        console.error(e);
+        setError(e.message);
+      });
+  };
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+  const handleEmailVerification = () => {
+    verifyEmail()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+  const handleAccepted = (event) => {
+    console.log(event.target.checked);
+    setAccepted(event.target.checked);
+  };
+
+  return (
+    <div className="  ">
+      <Container fluid>
+        <Row className=" flex-column-reverse flex-lg-row">
+          <Col lg="6" md="12">
+            <Container
+              className="h-100
+                           d-flex justify-content-center"
+            >
+              <div className="w-75  my-3">
+                <h1 className="text-navy display-4 text-center ">
+                  Sign Up Your Account
+                </h1>
+
+                <Form onSubmit={handleSubmit}>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <FontAwesomeIcon
+                      className="me-2 text-success"
+                      icon={faUser}
+                    ></FontAwesomeIcon>
+                    <Form.Label className="text-light-mediumvioletred mt-2 fw-bold">
+                      Full Name
+                    </Form.Label>
+                    <Form.Control
+                      className="rounded-pill px-4 py-2"
+                      name="name"
+                      type="text"
+                      placeholder="Enter your Full Name"
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <FontAwesomeIcon
+                      className="me-2 text-success"
+                      icon={faImage}
+                    ></FontAwesomeIcon>
+                    <Form.Label className="text-light-mediumvioletred mt-2 fw-bold">
+                      Photo URL
+                    </Form.Label>
+                    <Form.Control
+                      className="rounded-pill px-4 py-2"
+                      name="photoURL"
+                      type="text"
+                      placeholder="Enter your Full Name"
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <FontAwesomeIcon
+                      className="me-2 text-success"
+                      icon={faEnvelope}
+                    ></FontAwesomeIcon>
+                    <Form.Label className="text-light-mediumvioletred mt-2 fw-bold">
+                      Email address
+                    </Form.Label>
+                    <Form.Control
+                      className="rounded-pill px-4 py-2"
+                      name="email"
+                      type="email"
+                      placeholder="Enter email"
+                      required
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <FontAwesomeIcon
+                      className="me-2 text-success"
+                      icon={faLock}
+                    ></FontAwesomeIcon>
+                    <Form.Label className="text-light-mediumvioletred fw-bold">
+                      Password
+                    </Form.Label>
+                    <Form.Control
+                      className="rounded-pill px-4 py-2"
+                      name="password"
+                      type="password"
+                      placeholder="Password"
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check
+                      type="checkbox"
+                      onClick={handleAccepted}
+                      label={
+                        <>
+                          <span className="text-light-mediumvioletred">
+                            Accept{" "}
+                          </span>{" "}
+                          <Link to="/terms">Terms and conditions</Link>
+                        </>
+                      }
+                    />
+                  </Form.Group>
+
+                  <div className="text-center">
+                    <Button
+                      variant="primary"
+                      className="btn-bg  border border-0 rounded w-75 text-center"
+                      type="submit"
+                      disabled={!accepted}
+                    >
+                      Sign Up
+                    </Button>
+                  </div>
+
+                  <Form.Text className="text-danger">{error} </Form.Text>
+                </Form>
+              </div>
+            </Container>
+          </Col>
+          <Col lg="6" md="12" sm="12" className="  mb-0 me-0 p-0 bg-register">
+            <Container className=" h-100 img-fluid d-flex justify-content-center align-items-center text-center     ">
+              <div className="w-50   ">
+                <h1 className="text-pale-lime-green fw-bold display-4 mt-5  ">
+                  Already a member?
+                </h1>
+                <p className=" text-warning ">
+                  Sign In and Join to get personalized help with what you’re
+                  studying or to learn something completely new. We’ll save all
+                  of your progress.
+                </p>
+                <Link to="/login">
+                  <button className="btn btn-outline-info rounded-pill w-50 p-2">
+                    Sign In
+                  </button>
+                </Link>
+              </div>
+            </Container>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+  );
+};
+
+export default Register;

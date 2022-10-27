@@ -34,13 +34,13 @@ const Header = ({ value }) => {
       <Navbar
         sticky="top"
         collapseOnSelect
-        className="shadow"
+        className="shadow align-items-center"
         expand="lg"
         bg="light"
         variant="light"
       >
         <Container>
-          <Navbar.Brand>
+          <Navbar.Brand >
             <Link className="navbar-brand" to="/">
               <img
                 src={logo}
@@ -59,7 +59,7 @@ const Header = ({ value }) => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto fs-5 fw-bold ">
-              <Link className="nav-style-home hover-link me-lg-3" to="/">
+              <Link className="nav-style-home hover-link me-lg-4" to="/">
                 Home
               </Link>
 
@@ -119,7 +119,7 @@ const Header = ({ value }) => {
               <Link to="/profile">
                 {user?.photoURL ? (
                   <Image
-                    style={{ height: "30px" }}
+                    style={{ height: "50px" }}
                     roundedCircle
                     src={user?.photoURL}
                   ></Image>
@@ -127,21 +127,7 @@ const Header = ({ value }) => {
                   <FaUser></FaUser>
                 )}
               </Link>
-              {/* <Link className="nav-style  me-lg-4" to="/login">
-                Log In
-              </Link>
-              <Link to="/register">
-                <button
-                  type="button"
-                  className=" rounded border-0 btn-bg bg-success text-white  px-3 py-2"
-                >
-                  Join For Free
-                  <FontAwesomeIcon
-                    className="ms-2"
-                    icon={faSignInAlt}
-                  ></FontAwesomeIcon>
-                </button>
-              </Link> */}
+               
             </Nav>
           </Navbar.Collapse>
         </Container>

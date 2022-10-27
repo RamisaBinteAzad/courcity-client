@@ -24,8 +24,8 @@ const Main = () => {
 
               //   checked={theme === "dark"}
             ></Switch> */}
-            <Outlet></Outlet>
           </ThemeContext.Provider>
+          <Outlet></Outlet>
         </div>
       </div>
     );

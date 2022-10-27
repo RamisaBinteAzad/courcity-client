@@ -1,0 +1,18 @@
+#light .bg-change{
+    background-color:#258D5D;
+    color:white;
+}
+#dark .bg-change{
+    background-color:aquamarine;
+    color:#090761;
+    
+}
+.text-navy-color{
+     color:#090761;
+}
+.icon-rectangle{
+     width:4px;
+     height:4px;
+     background-color: green;
+
+}

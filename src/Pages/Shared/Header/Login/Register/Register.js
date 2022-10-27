@@ -109,7 +109,7 @@ const Register = () => {
                       className="rounded-pill px-4 py-2"
                       name="photoURL"
                       type="text"
-                      placeholder="Enter your Full Name"
+                      placeholder="Profile Pic"
                       required
                     />
                   </Form.Group>
@@ -164,7 +164,7 @@ const Register = () => {
                   <div className="text-center">
                     <Button
                       variant="primary"
-                      className="btn-bg  border border-0 rounded w-75 text-center"
+                      className="btn-bg  border border-0 rounded px-3 text-center"
                       type="submit"
                       disabled={!accepted}
                     >

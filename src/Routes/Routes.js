@@ -3,6 +3,7 @@ import SingleCourseFind from "../Component/SingleCourseFind";
 import Main from "../layout/Main";
 import AllCourses from "../Pages/AllCourses/AllCourses";
 import Blog from "../Pages/Blog/Blog";
+import CheckOutPage from "../Pages/CheckOutPage/CheckOutPage";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home";
@@ -11,6 +12,7 @@ import Profile from "../Pages/Others/Profile/Profile";
 import Login from "../Pages/Shared/Header/Login/Login/Login";
 import Register from "../Pages/Shared/Header/Login/Register/Register";
 import SingleCourse from "../Pages/SingleCourse/SingleCourse";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -23,7 +25,6 @@ export const routes = createBrowserRouter([
         element: <AllCourses></AllCourses>,
         loader: () => fetch("http://localhost:5000/courses"),
       },
-     
 
       {
         path: "/singleCourse/:id",
@@ -50,6 +51,15 @@ export const routes = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/checkOut",
+        element: (
+          <PrivateRoute>
+            <CheckOutPage></CheckOutPage>
+           </PrivateRoute>
+        ),
+         
       },
     ],
   },

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Container, Image } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import CheckOutPage from '../CheckOutPage/CheckOutPage';
 import CourseDetail from '../CourseDetail/CourseDetail';
 
 const SingleCourse = () => {
@@ -76,6 +77,13 @@ const SingleCourse = () => {
                 ))}
                 <br />
                 <br />
+
+                <button className="btn btn-bg ">
+                  <Link to="/checkOut" className="text-decoration-none">
+                    Get Premium Access
+                  
+                  </Link>
+                </button>
               </Card.Text>
             </Card.Body>
           </Card>

@@ -1,6 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import LeftSideBar from "../LeftSideBar/LeftSideBar";
 import "./AllCourses.css";
  
@@ -9,6 +9,7 @@ import RightSideBar from "../RightSideBar/RightSideBar";
 
 const AllCourses = () => {
   const allCourses = useLoaderData();
+  console.log(allCourses);
   return (
     <div className="container">
       <div className="row   ">
@@ -29,7 +30,10 @@ const AllCourses = () => {
                       key={course.id}
                       course={course}
                     ></RightSideBar>
-                  ))}
+                  
+                  ))
+                     
+                  }
                 </div>
               </div>
             </div>

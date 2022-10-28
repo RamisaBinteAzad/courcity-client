@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import {  FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+ 
  
 
 const RightSideBar = ({ course }) => {
@@ -50,7 +52,9 @@ const RightSideBar = ({ course }) => {
           <div className="d-flex align-items-center justify-content-between">
             <span className="color-orange h1">${price}</span>
             <Button variant="outline-info rounded-pill py-2">
-              <small>View More</small>
+              <Link to={`/singleCourse/${id}`} className="text-decoration-none">
+                View More
+              </Link>
             </Button>{" "}
           </div>
         </div>

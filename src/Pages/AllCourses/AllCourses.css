@@ -7,8 +7,21 @@
     color:#090761;
     
 }
-.text-navy-color{
+.text-navy-color {
      color:#090761;
+}
+#light .text-faq-title{
+     color:#090761;
+}
+#dark .text-faq-title{
+     color:magenta;
+}
+
+#dark .text-navy-color{
+     color:aquamarine;;
+}
+#dark .text-body-change{
+    color:whitesmoke;
 }
 .icon-rectangle{
      width:4px;

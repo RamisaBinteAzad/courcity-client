@@ -17,13 +17,6 @@ const Main = () => {
         <div id={theme}>
           <ThemeContext.Provider value={{ theme, toggleTheme }}>
             <Header value={{ theme, toggleTheme }}></Header>
-            {/* <Switch
-              className="switch"
-              onChange={toggleTheme}
-              checked={theme === "dark"}
-
-              //   checked={theme === "dark"}
-            ></Switch> */}
           </ThemeContext.Provider>
           <Outlet></Outlet>
         </div>

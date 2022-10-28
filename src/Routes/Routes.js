@@ -23,14 +23,17 @@ export const routes = createBrowserRouter([
       {
         path: "/courses",
         element: <AllCourses></AllCourses>,
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () =>
+          fetch("https://courcity-server-assignment10.vercel.app/courses"),
       },
 
       {
         path: "/singleCourse/:id",
         element: <SingleCourse></SingleCourse>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/singleCourse/${params.id}`),
+          fetch(
+            `https://courcity-server-assignment10.vercel.app/singleCourse/${params.id}`
+          ),
       },
       {
         path: "/faq",
@@ -57,9 +60,8 @@ export const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <CheckOutPage></CheckOutPage>
-           </PrivateRoute>
+          </PrivateRoute>
         ),
-         
       },
     ],
   },

@@ -21,7 +21,7 @@ const FAQ = () => {
         <div className="row">
           <div className="col-md-6 col-lg-4 mb-4">
             <h6 className="mb-3 text-faq-title  ">
-              <FaRocket className=" fs-4 pe-2"></FaRocket> Is Payment System
+              <FaRocket className=" fs-2 pe-2"></FaRocket> Is Payment System
               Secure Here?
             </h6>
 
@@ -39,7 +39,7 @@ const FAQ = () => {
 
           <div className="col-md-6 col-lg-4 mb-4">
             <h6 className="mb-3 text-faq-title   ">
-              <FaCalendarPlus className=" fs-4 pe-2"></FaCalendarPlus>How long
+              <FaCalendarPlus className=" fs-2 pe-2"></FaCalendarPlus>How long
               does my subscription last?
             </h6>
             <p>
@@ -54,7 +54,7 @@ const FAQ = () => {
           </div>
           <div className="col-md-6 col-lg-4 mb-4">
             <h6 className="mb-3 text-faq-title   ">
-              <FaPaperPlane className=" fs-4 pe-2"></FaPaperPlane> How do I do
+              <FaPaperPlane className=" fs-2 pe-2"></FaPaperPlane> How do I do
               things such as upgrade or update my billing information?
             </h6>
 
@@ -117,7 +117,7 @@ const FAQ = () => {
               </span>
             </p>
           </div>
- </div>
+        </div>
       </Container>
     </div>
   );

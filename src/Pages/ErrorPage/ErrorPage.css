@@ -1,0 +1,25 @@
+ .link{
+    text-decoration: none;
+    
+    font-weight: bold;
+    color:white;
+   
+}
+ 
+.link:hover{
+    color:white;
+}
+ 
+ 
+ 
+/* .btn-navy{
+    background-color: navy;
+    border-radius: 10px;
+    border:0;
+    padding: 10px 12px;
+     color:white;
+}
+.btn-navy:hover{
+    background-color:aqua;
+    color:white;
+}  */

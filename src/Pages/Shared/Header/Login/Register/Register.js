@@ -69,7 +69,7 @@ const Register = () => {
   return (
     <div className="  ">
       <Container fluid>
-        <Row className=" flex-column-reverse flex-lg-row">
+        <Row className="">
           <Col lg="6" md="12">
             <Container
               className="h-100

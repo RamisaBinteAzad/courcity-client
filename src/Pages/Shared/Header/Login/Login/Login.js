@@ -74,7 +74,7 @@ const Login = () => {
   return (
     <div className="banner-section  w-100 h-100">
       <Container fluid>
-        <Row className="flex-column-reverse flex-lg-row">
+        <Row className="">
           <Col lg="6">
             <Container
               className="h-75

@@ -40,7 +40,7 @@ const Header = ({ value }) => {
         variant="light"
       >
         <Container>
-          <Navbar.Brand >
+          <Navbar.Brand>
             <Link className="navbar-brand" to="/">
               <img
                 src={logo}
@@ -87,7 +87,7 @@ const Header = ({ value }) => {
                     <button
                       type="button"
                       onClick={handleLogOut}
-                      className=" rounded border-0 btn-bg  bg-danger mx-3 text-white  px-3 py-2"
+                      className="btn btn-danger  w-25 mx-3    "
                     >
                       Log Out
                       <FontAwesomeIcon
@@ -116,18 +116,19 @@ const Header = ({ value }) => {
                   </>
                 )}
               </>
-              <Link to="/profile">
-                {user?.photoURL ? (
+              <Link>
+                {user ? (
                   <Image
-                    style={{ height: "50px" }}
+                    style={{ height: "30px" }}
                     roundedCircle
                     src={user?.photoURL}
+                    className="img-fluid "
+                    title={user?.displayName}
                   ></Image>
                 ) : (
                   <FaUser></FaUser>
                 )}
               </Link>
-               
             </Nav>
           </Navbar.Collapse>
         </Container>

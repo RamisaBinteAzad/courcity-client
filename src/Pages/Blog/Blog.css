@@ -1,0 +1,13 @@
+.bg-blog{
+    
+    
+     background-image: url('../../assets/images/blog2.jpg');
+    height:100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: overlay;
+}
+.blog-title-color{
+    color:#090761;
+}

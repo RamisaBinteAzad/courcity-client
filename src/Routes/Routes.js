@@ -56,12 +56,17 @@ export const routes = createBrowserRouter([
         element: <Profile></Profile>,
       },
       {
-        path: "/checkOut",
+        // /checkout/${id}
+        path: "/checkOut/:id",
         element: (
           <PrivateRoute>
             <CheckOutPage></CheckOutPage>
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(
+            `https://courcity-server-assignment10.vercel.app/singleCourse/${params.id}`
+          ),
       },
     ],
   },

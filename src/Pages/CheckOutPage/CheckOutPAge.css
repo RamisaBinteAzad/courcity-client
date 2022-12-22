@@ -1,0 +1,28 @@
+ 
+#light .bg-navy-color{
+    background-color:#090761;
+    color:white;
+    font-weight: 400;
+}
+#dark .bg-navy-color{
+      font-weight: 700;
+    
+}
+#light .text-price {
+color:#FDC727;
+}
+#dark  .text-price {
+   color: #090761;
+   font-weight:bolder;
+}
+.bg-card{
+    background-color:#CEE6C2;
+}
+.bg-hr{
+      border: 1px solid rgb(158, 153, 153);
+}
+#dark .bg-hr{
+    color: white;
+     border: 1px solid white;
+     
+}

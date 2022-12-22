@@ -24,7 +24,7 @@ const RightSideBar = ({ course }) => {
       <div className="card h-100 rounded shadow p-3 mt-3">
         <img className="img-fluid rounded" src={img} alt="" />
         <div className="card-body  ">
-          <h5 className="card-title fw-bold text-navy-color">{title}</h5>
+          <h5 className="card-title fw-bold navy-color">{title}</h5>
           <p className="pt-2 text-muted fw-bold"> {about}</p>
           <p className=" text-muted mb-0">
             <small>{instructor}</small>
@@ -51,8 +51,11 @@ const RightSideBar = ({ course }) => {
           </div>
           <div className="d-flex align-items-center justify-content-between">
             <span className="color-orange h1">${price}</span>
-            <Button variant="outline-info rounded-pill py-2">
-              <Link to={`/singleCourse/${id}`} className="text-decoration-none">
+            <Button variant="outline-info  rounded-pill py-2">
+              <Link
+                to={`/singleCourse/${id}`}
+                className="hover-link  text-decoration-none"
+              >
                 View More
               </Link>
             </Button>{" "}

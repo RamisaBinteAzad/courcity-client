@@ -5,6 +5,7 @@
 #dark .bg-change{
     background-color:aquamarine;
     color:#090761;
+    font-weight: 600;
     
 }
 .text-navy-color {
@@ -28,4 +29,13 @@
      height:4px;
      background-color: green;
 
+}
+.navy-color{
+color:#090761;
+}
+.bg-navy-color{
+ background-color:#090761 ;
+}
+.hover-link:hover{
+    color: black;
 }
